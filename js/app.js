@@ -54,10 +54,56 @@ function getWinner(){
   if(userChoice === computerChoice){
     $('h2').text("It's a tie")
   } else if(userChoice === "rock") {
-    computerChoice === "paper" ?  $('h2').text("Paper Wins!") : $('h2').text("Rock Wins!")
+    if(computerChoice === "paper") {
+      $('h2').text("Computer Win!")
+      computerScore++
+      $('#computerScore').html(computerScore)
+    } else {
+      $('h2').text("You Win!")
+      userScore++
+      $('#userScore').html(userScore)
+    }
   } else if (userChoice === "paper") {
-    computerChoice === "rock" ?  $('h2').text("Paper Wins!") : $('h2').text("Scissors Wins!")
+    if(computerChoice === "rock"){
+      $('h2').text("You Win!")
+      userScore++
+      $('#userScore').html(userScore)
+    } else {
+      $('h2').text("Computer Win!")
+      computerScore++
+      $('#computerScore').html(computerScore)
+    }
   } else if (userChoice === "scissors") {
-    computerChoice === "rock" ?  $('h2').text("Rock Wins!") : $('h2').text("Scissors Wins!")
+    if(computerChoice === "rock"){
+      $('h2').text("Computer Win!")
+      computerScore++
+      $('#computerScore').html(computerScore)
+    } else {
+      $('h2').text("You Win!")
+      userScore++
+      $('#userScore').html(userScore)
+    }
   }
 }
+
+
+/////Scoreboard logic/////
+var userScore = 0
+var computerScore = 0
+
+// $('#userScore').html(userScore)
+// $('#computerScore').html(computerScore)
+
+
+//////////Game logic for reset game///////////////
+$('#reset-game').click(function(){
+  $('#comp').css('background-image', "url(./assets/compMove.png)")
+  $('#user').css('background-image', "url(./assets/userMove.png)")
+  $('h2').text("")
+})
+
+///////Game logic for scoreboard reset////////
+$('#reset-score').click(function(){
+  $('#userScore').html(0)
+  $('#computerScore').html(0)
+})
